@@ -8,7 +8,7 @@ namespace Assignment1
         static void Main(string[] args)
         {
             Console.WriteLine("Getting the range to print the prime number");
-            int x = 32, y = 100;
+            int x = 0, y = 100;
             Console.WriteLine("find the prime numbers between " + x + " and " +y);
             printPrimeNumber(x, y);
               
@@ -73,18 +73,16 @@ namespace Assignment1
                 { 
                     for (int i = x; i <= y; i++)
                         {
-                             bool ispri = false;
+                            bool flag = false;
                              if (i == 0)
                                 continue;
                             for (int j = 2; j < i; j++)
                                 {
-                                    if (i % j == 0)
-                                        {
-                                               ispri = true;
-                                               break;
-                                        }
+                                    flag = isPrime(i, j);
+                                    if (flag == true)
+                                        break;
                                 }
-                            if (ispri == false)
+                            if (flag == false)
                                 {
                                  Console.Write(i + " "); 
                                 }
@@ -95,6 +93,16 @@ namespace Assignment1
             {
                 Console.WriteLine("Exception occured while computing printprimeNumbers()");
             }//end of catch
+        }
+        public static bool isPrime(int i, int j)
+        {
+            bool flag = false;
+            //checking whether the number is prime or not
+            if (i % j == 0)
+            {
+                flag = true;
+            }
+            return flag;
         }
         public static double getSeriesResult(int n)
         {
@@ -177,7 +185,8 @@ namespace Assignment1
                     {
                         string s = char.ToString(i);
                         int a = int.Parse(s);
-                        finaldec += a * Math.Pow(2, k);
+                        int number = calculateThePower(2, k);
+                        finaldec += a * number;
                         k++;
                     }
                 }
@@ -189,6 +198,16 @@ namespace Assignment1
                 Console.WriteLine("Execption occurred while computing binaryTodecimal()");
             }//end of catch
             return dec;
+        }
+        public static int calculateThePower(int bin, int k)
+        {
+            int number = 1;
+            for (int i = 1; i <= k; i++)
+            {
+                //getting the multiple of the same number as it work as Math.pow(2,k)
+                number = number * bin;
+            }
+            return number;
         }
         public static bool checkAllzero(char[] c)
         {

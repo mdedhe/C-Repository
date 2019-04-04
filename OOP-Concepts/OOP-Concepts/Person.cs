@@ -8,7 +8,10 @@ namespace OOP_Concepts
     {
         public string firstName;
         public string lastName;
-        private string salutation = "Mr.";
+        public string salutation;
+        private string salutationMr = "Mr.";
+        private string salutationMrs = "Mrs.";
+        private string defaultlastName = "NMN";
         public string getName()
         {
             return salutation+ " "+firstName + " " + lastName;

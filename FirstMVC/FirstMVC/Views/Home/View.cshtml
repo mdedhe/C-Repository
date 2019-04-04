@@ -1,0 +1,28 @@
+﻿@model IEnumerable<FirstMVC.Models.Employee>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("ID", "ID", new { id=item.id }) |
+                @Html.ActionLink("Name", "Name", new { name=item.name  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
